@@ -25,6 +25,7 @@ model User {
   status        Boolean     @default(true)
   timeZone      String?
   stripe_id     String?
+  time          String[]    @default([])
 
   services     Service[]
   subscription Subscription? 

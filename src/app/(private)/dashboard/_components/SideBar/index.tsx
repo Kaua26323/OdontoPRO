@@ -19,13 +19,13 @@ import {
   SheetDescription,
   SheetTitle,
   SheetTrigger,
-} from "@/src/components/ui/sheet";
-import { Button } from "@/src/components/ui/button";
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import { SidebarLinks } from "../SidebarLinks";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import LogoOdontoPRO from "../../../../../../public/logo-odonto.png";
-import { Collapsible } from "@/src/components/ui/collapsible";
+import { Collapsible } from "@/components/ui/collapsible";
 import { CollapsibleContent } from "@radix-ui/react-collapsible";
 
 export function SidebarDashboard({ children }: { children: ReactNode }) {
@@ -45,7 +45,7 @@ export function SidebarDashboard({ children }: { children: ReactNode }) {
           }
         )}
       >
-        <div className="mb-4 mt-4  ">
+        <div className="mb-4 mt-4">
           {isOpen ? (
             <Image
               src={LogoOdontoPRO}
@@ -62,6 +62,7 @@ export function SidebarDashboard({ children }: { children: ReactNode }) {
 
         <Button
           onClick={() => setIsOpen(!isOpen)}
+          size="lg"
           className={clsx(
             "bg-zinc-900 cursor-pointer hover:scale-105 hover:bg-zinc-700 duration-300",
             {
@@ -69,21 +70,26 @@ export function SidebarDashboard({ children }: { children: ReactNode }) {
               "self-center": !isOpen,
             }
           )}
-          size="icon-lg"
         >
           {isOpen ? (
             <ChevronLeft className="w-10 h-10" />
           ) : (
-            <ChevronRight className="w-15 h-15" />
+            <ChevronRight className="w-10 h-10" />
           )}
         </Button>
 
         {!isOpen && (
-          <nav className="flex flex-col gap-1 pl-1 mt-2">
+          <nav className="flex flex-col gap-1 pl-1 mt-2 md:gap-2">
             <SidebarLinks
               href="/dashboard"
               label="Agendamentos"
-              icon={<CalendarCheck2 className="w-6 h-6" />}
+              icon={
+                <CalendarCheck2
+                  className={`w-6 h-6 md:w-8 md:h-8 ${
+                    pathname === "/dashboard" ? "text-white" : "text-black"
+                  }`}
+                />
+              }
               pathname={pathname}
               isOpen={isOpen}
               isMobile={true}
@@ -92,7 +98,15 @@ export function SidebarDashboard({ children }: { children: ReactNode }) {
             <SidebarLinks
               href="/dashboard/services"
               label="Serviços"
-              icon={<Briefcase className="w-6 h-6" />}
+              icon={
+                <Briefcase
+                  className={`w-6 h-6 md:w-8 md:h-8 ${
+                    pathname === "/dashboard/services"
+                      ? "text-white"
+                      : "text-black"
+                  }`}
+                />
+              }
               pathname={pathname}
               isOpen={isOpen}
               isMobile={true}
@@ -101,7 +115,15 @@ export function SidebarDashboard({ children }: { children: ReactNode }) {
             <SidebarLinks
               href="/dashboard/profile"
               label="Meu perfil"
-              icon={<UserRoundCog className="w-6 h-6" />}
+              icon={
+                <UserRoundCog
+                  className={`w-6 h-6 md:w-8 md:h-8 ${
+                    pathname === "/dashboard/profile"
+                      ? "text-white"
+                      : "text-black"
+                  }`}
+                />
+              }
               pathname={pathname}
               isOpen={isOpen}
               isMobile={true}
@@ -110,7 +132,15 @@ export function SidebarDashboard({ children }: { children: ReactNode }) {
             <SidebarLinks
               href="/dashboard/plans"
               label="Planos"
-              icon={<CreditCard className="w-6 h-6" />}
+              icon={
+                <CreditCard
+                  className={`w-6 h-6 md:w-8 md:h-8 ${
+                    pathname === "/dashboard/plans"
+                      ? "text-white"
+                      : "text-black"
+                  }`}
+                />
+              }
               pathname={pathname}
               isOpen={isOpen}
               isMobile={true}
@@ -121,7 +151,7 @@ export function SidebarDashboard({ children }: { children: ReactNode }) {
         <Collapsible open={isOpen}>
           <CollapsibleContent>
             <nav className="flex flex-col gap-1 overflow-hidden">
-              <span className="text-sm text-gray-400 font font-medium uppercase">
+              <span className="text-sm text-gray-400 font font-medium uppercase md:text-lg">
                 Painel
               </span>
 
@@ -141,7 +171,7 @@ export function SidebarDashboard({ children }: { children: ReactNode }) {
                 isOpen={isOpen}
               />
 
-              <span className="text-sm text-gray-400 font font-medium mt-2.5 uppercase">
+              <span className="text-sm text-gray-400 font font-medium mt-2.5 uppercase md:text-lg">
                 Configurações
               </span>
 

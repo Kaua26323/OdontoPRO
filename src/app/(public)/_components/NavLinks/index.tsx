@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Loader, LogIn } from "lucide-react";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { handleRegister } from "../../_actions/login";
 

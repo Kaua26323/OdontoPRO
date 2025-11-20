@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Loader, LogIn } from "lucide-react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
-import { handleRegister } from "@/lib/auth.actions";
+import { handleRegister } from "../../_actions/login";
 
 interface NavLinksProps {
   closeNavLinks?: () => void;
